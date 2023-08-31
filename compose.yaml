@@ -1,0 +1,7 @@
+services:
+  course-service:
+    build: ./course-apis
+    volumes:
+      - ./course-apis:/app
+    ports:
+      - 5001:8080
