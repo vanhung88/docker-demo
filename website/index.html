@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Docker demo</title>
+  </head>
+  <body>
+    <h1>Courses</h1>
+    <ul id="courseList"></ul>
+    <script type="text/javascript">
+      var api = 'http://localhost:5001';
+      fetch(api)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          var courses = data.course;
+          var ul = document.getElementById('courseList');
+          var listContent = '';
+          courses.forEach((element) => {
+            listContent += `<li>${element}</li>`;
+          });
+          ul.innerHTML = listContent;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>
